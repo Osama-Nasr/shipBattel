@@ -665,70 +665,70 @@ bool checkingCloseShipsSHIP(char player, unsigned int y, unsigned int x, char di
     }
 }
 
-bool checkingREEF(unsigned int y, unsigned int x, char direction, unsigned int number, char shipType[], int size) {
-    int xCOPY = x;
-    int yCOPY = y;
-    bool every_thing_is_cool = true;
+    bool checkingREEF(unsigned int y, unsigned int x, char direction, unsigned int number, char shipType[], int size) {
+        int xCOPY = x;
+        int yCOPY = y;
+        bool every_thing_is_cool = true;
 
-    if (board1.REEF_count == 2) {
-        if (direction == 'N')
-        {
-            for (int i = 0; i < size; i++)
+        if (board1.REEF_count == 2) {
+            if (direction == 'N')
             {
-                if (board1.board[y][x] == '#')
+                for (int i = 0; i < size; i++)
                 {
-                    cout << "INVALID OPERATION \"PLACE_SHIP " << yCOPY << " " << xCOPY << " " << direction << " " << number << " " << shipType << "\": PLACING SHIP ON REEF" << endl;
-                    exit(0);
+                    if (board1.board[y][x] == '#')
+                    {
+                        cout << "INVALID OPERATION \"PLACE_SHIP " << yCOPY << " " << xCOPY << " " << direction << " " << number << " " << shipType << "\": PLACING SHIP ON REEF" << endl;
+                        exit(0);
+                    }
+                    y++;
                 }
-                y++;
+            }
+            else if (direction == 'S')
+            {
+                for (int i = 0; i < size; i++)
+                {
+                    if (board1.board[y][x] == '#')
+                    {
+                        cout << "INVALID OPERATION \"PLACE_SHIP " << yCOPY << " " << xCOPY << " " << direction << " " << number << " " << shipType << "\": PLACING SHIP ON REEF" << endl;
+                        exit(0);
+                    }
+                    y--;
+                }
+            }
+            else if (direction == 'E')
+            {
+                for (int i = 0; i < size; i++)
+                {
+                    if (board1.board[y][x] == '#')
+                    {
+                        cout << "INVALID OPERATION \"PLACE_SHIP " << yCOPY << " " << xCOPY << " " << direction << " " << number << " " << shipType << "\": PLACING SHIP ON REEF" << endl;
+                        exit(0);
+                    }
+                    x--;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < size; i++)
+                {
+                    if (board1.board[y][x] == '#')
+                    {
+                        cout << "INVALID OPERATION \"PLACE_SHIP " << yCOPY << " " << xCOPY << " " << direction << " " << number << " " << shipType << "\": PLACING SHIP ON REEF" << endl;
+                        exit(0);
+                    }
+                    x++;
+                }
             }
         }
-        else if (direction == 'S')
-        {
-            for (int i = 0; i < size; i++)
+        else {
+            if (board1.board[y][x] == '#')
             {
-                if (board1.board[y][x] == '#')
-                {
-                    cout << "INVALID OPERATION \"PLACE_SHIP " << yCOPY << " " << xCOPY << " " << direction << " " << number << " " << shipType << "\": PLACING SHIP ON REEF" << endl;
-                    exit(0);
-                }
-                y--;
+                cout << "INVALID OPERATION \"PLACE_SHIP " << yCOPY << " " << xCOPY << " " << direction << " " << number << " " << shipType << "\": PLACING SHIP ON REEF" << endl;
+                exit(0);
             }
         }
-        else if (direction == 'E')
-        {
-            for (int i = 0; i < size; i++)
-            {
-                if (board1.board[y][x] == '#')
-                {
-                    cout << "INVALID OPERATION \"PLACE_SHIP " << yCOPY << " " << xCOPY << " " << direction << " " << number << " " << shipType << "\": PLACING SHIP ON REEF" << endl;
-                    exit(0);
-                }
-                x--;
-            }
-        }
-        else
-        {
-            for (int i = 0; i < size; i++)
-            {
-                if (board1.board[y][x] == '#')
-                {
-                    cout << "INVALID OPERATION \"PLACE_SHIP " << yCOPY << " " << xCOPY << " " << direction << " " << number << " " << shipType << "\": PLACING SHIP ON REEF" << endl;
-                    exit(0);
-                }
-                x++;
-            }
-        }
+        return !every_thing_is_cool;
     }
-    else {
-        if (board1.board[y][x] == '#')
-        {
-            cout << "INVALID OPERATION \"PLACE_SHIP " << yCOPY << " " << xCOPY << " " << direction << " " << number << " " << shipType << "\": PLACING SHIP ON REEF" << endl;
-            exit(0);
-        }
-    }
-    return !every_thing_is_cool;
-}
 
 void recordTheShipA(unsigned int y, unsigned int x, char direction, unsigned int number, int size, int placingTime) {
 
